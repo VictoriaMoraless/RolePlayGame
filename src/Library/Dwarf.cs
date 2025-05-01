@@ -9,7 +9,7 @@ public class Dwarf
     public Dwarf(string name, int health)
     {
         this.name = name;
-        this.health = health;
+        this.health = 100;
         this.items = new List<string>(); // lista vacia
     }
     
@@ -80,7 +80,7 @@ public class Dwarf
         Console.WriteLine($"{name} guardo {item} en su bolsa encantada.");
     }
 
-    public void RmItem()
+    public void RmItem(string item)
     {
         if (items.Contains((item)))
         {
