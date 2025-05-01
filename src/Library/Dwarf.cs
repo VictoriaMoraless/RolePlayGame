@@ -6,7 +6,7 @@ public class Dwarf
     private int health;
     private List<string> items;
 
-    public Dwarf(string name, int health)
+    public Dwarf(string name)
     {
         this.name = name;
         this.health = 100;
