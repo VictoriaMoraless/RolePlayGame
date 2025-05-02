@@ -5,7 +5,7 @@ public class Items
         private string name;
         private int attack;
         private int defense;
-        public string GetNombre()
+        public string GetName()
         {
             return this.name;
         }
