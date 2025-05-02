@@ -4,12 +4,14 @@ public class Elf
 {
     private string name;
     private int health;
+    private int magic;
     private List<string> items;
 
     public Elf(string name)
     {
         this.name = name;
         this.health = 100;
+        this.magic = 30;
         this.items = new List<string>(); // es una lista vacia
     }
     
