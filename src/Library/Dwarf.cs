@@ -4,13 +4,13 @@ public class Dwarf
 {
     private string name;
     private int health;
-    private List<string> items;
+    private List<Items> items;
 
     public Dwarf(string name)
     {
         this.name = name;
         this.health = 100;
-        this.items = new List<string>(); // lista vacia
+        this.items = new List<Items>(); // lista vacia
     }
     
 // getters para acceder a nombre, vida, items, ataque, defensa, atacar, curar, agregar, borrar    
@@ -30,7 +30,7 @@ public class Dwarf
         health = newHealth;
     }
     
-    public List<string> GetItems()
+    public List<Items> GetItems()
     {
         return items;
     }
@@ -74,13 +74,13 @@ public class Dwarf
         Console.WriteLine($"{name} se curo {qty} puntos de vida y su salud actual es {health}");
     }
 
-    public void AddItem(string item)
+    public void AddItem(Items item)
     {
         items.Add(item);
-        Console.WriteLine($"{name} guardo {item} en su bolsa encantada.");
+        Console.WriteLine($"{name} guardo {item.GetName()} en su bolsa encantada.");
     }
 
-    public void RmItem(string item)
+    public void RmItem(Items item)
     {
         if (items.Contains((item)))
         {
@@ -89,7 +89,7 @@ public class Dwarf
         }
         else
         {
-            Console.WriteLine($"{item} no esta en la bolsa encantada de {name}.");
+            Console.WriteLine($"{item.GetNombre()} no esta en la bolsa encantada de {name}.");
         }
     }
 }
