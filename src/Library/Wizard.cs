@@ -1,3 +1,4 @@
+using Library;
 namespace Library;
 
 public class Wizard
