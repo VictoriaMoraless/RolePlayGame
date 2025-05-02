@@ -18,10 +18,31 @@ class Program
         dwarf1.AddItem(incienso);
         elf1.AddItem("Gorro");
         elf1.AddItem("Capa");
+
+        while (!dwarf1.IsDead() && !elf1.IsDead())
+        {
+            Console.WriteLine("\nQuien juega? (1 = Gimli, 2 = Angrod)");
+            string input = Console.ReadLine();
+
+            if (input == "1")
+            {
+                dwarf1.Attack(elf1);
+            }
+            else if (input == "2")
+            {
+                elf1.Attack((dwarf1));
+            }
+            else
+            {
+                Console.WriteLine("Opcion invalida");
+            }
+            
+            Console.WriteLine($"Salud de {dwarf1.GetName()}: {dwarf1.GetHealth()}");
+            Console.WriteLine($"Salud de {elf1.GetName()}: {elf1.GetHealth()}");
+        }
         
-        // atacar
-        dwarf1.Attack(elf1);
-        Console.WriteLine(elf1.DeadOrAlive());
+        Console.WriteLine($"\nfin del combate");
+        Console.WriteLine(dwarf1.IsDead() ? $"{dwarf1.GetName()} murio" : $"{elf1.GetName()} murio");
 
     }
 }
