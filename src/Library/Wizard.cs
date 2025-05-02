@@ -16,5 +16,4 @@ public class Wizard
         this.items = new List<string>();
         this.magicBook = new List<string>();
     }
-
 }
