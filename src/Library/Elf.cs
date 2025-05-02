@@ -68,7 +68,7 @@ public class Elf
         int attackValue = GetAttack();
         int damage = Math.Max(0, attackValue - dwarf.GetDefense()); // calcula el da;o segun la defensa
         dwarf.SetHealth(dwarf.GetHealth() - damage); // reduce la vida del enano atacado
-        Console.WriteLine($"{GetName()} ataco a {dwarf.GetName} y le hizo {damage} de da;o.");
+        Console.WriteLine($"{GetName()} ataco a {dwarf.GetName()} y le hizo {damage} de da;o.");
     }
 
     

@@ -6,12 +6,15 @@ class Program
         // creando personajes
         Dwarf dwarf1 = new Dwarf("Gimli");
         Elf elf1 = new Elf("Angrod");
+
+        List<Items> items = new List<Items>
+        {
+            new Items("Espada", 30, 20),
+            new Items("Incienso", 0, 10),
+            new Items("Gorro", 0, 5),
+            new Items("Capa", 0, 30)
+        };
         
-        // creando elementos
-        Items espada = new Items("Espada", 30, 20);
-        Items incienso = new Items("Incienso", 0, 10);
-        Items gorro = new Items("Gorro", 0, 5);
-        Items capa = new Items("Capa", 0, 30);
         
         // agregando elementos
         dwarf1.AddItem(espada);
