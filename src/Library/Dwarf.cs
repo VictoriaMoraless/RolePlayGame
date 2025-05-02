@@ -26,6 +26,16 @@ public class Dwarf
         return health;
     }
 
+    public bool IsDead()
+    {
+        return health <= 0;
+    }
+
+    public string DeadOrAlive()
+    {
+        return health <= 0 ? $"{name} esta muerto." : $"{name} esta vivo.";
+    }
+
     public void SetHealth(int newHealth)
     {
         health = newHealth;
@@ -38,19 +48,42 @@ public class Dwarf
 
     public int GetAttack()
     {
-        return 10; // todos los ataques restan al menos 10 puntos de vida al oponente 
+        int defaultAttack = 10; // default sin items
+        int itemAttack = 0; // aca acumla el valor de ataque segun el item
+
+        foreach (Items item in items)
+        {
+            itemAttack += item.GetAttack(); // asi suma alataque
+        }
+
+        return defaultAttack + itemAttack;
     }
 
-    public int GetDefense()
+    public int GetDefense() // esto es idem getattakc pero al reves!! cura ne vez de lastimar
     {
-        return 5; // idem getattack, pero en vez de restar suma a si mismo (?
+        int defaultDefense = 5;
+        int itemDefense = 0;
+
+        foreach (Items item in items)
+        {
+            itemDefense += item.GetDefense();
+        }
+
+        return defaultDefense + itemDefense;
     }
 
     public void Attack(Dwarf dwarf)
     {
+        if (dwarf.IsDead())
+        {
+            Console.WriteLine($"{dwarf.GetName()} esta muerto, no se le puede hacer mas da;o.");
+            return;
+        }
+        
         int attackValue = GetAttack();
         int damage = Math.Max(0, attackValue - dwarf.GetDefense()); // calcula el da;o segun la defensa
         dwarf.SetHealth(dwarf.GetHealth() - damage); // reduce la vida del enano atacado
+        Console.WriteLine($"{GetName()} ataco a {dwarf.GetName} y le hizo {damage} de da;o.");
     }
     
     
@@ -71,7 +104,7 @@ public class Dwarf
 
     public void Heal(int qty)
     {
-        health += qty;
+        health = Math.Min(100, health + qty); // no se cura mas de 100 puntos de vida
         Console.WriteLine($"{name} se curo {qty} puntos de vida y su salud actual es {health}");
     }
 
@@ -90,7 +123,7 @@ public class Dwarf
         }
         else
         {
-            Console.WriteLine($"{item.GetNombre()} no esta en la bolsa encantada de {name}.");
+            Console.WriteLine($"{item.GetName()} no esta en la bolsa encantada de {name}.");
         }
     }
 }
