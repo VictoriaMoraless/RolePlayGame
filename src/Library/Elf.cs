@@ -1,22 +1,23 @@
 using Library;
 namespace Library;
 
-public class Dwarf
+public class Elf
 {
     private string name;
     private int health;
-    private List<Items> items;
+    private int magic;
+    private List<string> items;
 
-    public Dwarf(string name)
+    public Elf(string name)
     {
         this.name = name;
         this.health = 100;
-        this.items = new List<Items>(); // lista vacia
+        this.magic = 30;
+        this.items = new List<string>(); // es una lista vacia
     }
     
-// getters para acceder a nombre, vida, items, ataque, defensa, atacar, curar, agregar, borrar    
     
-    public string GetName() // getter para nombre
+    public string GetName() // se obtiene el nombre
     {
         return name;
     }
@@ -31,7 +32,7 @@ public class Dwarf
         health = newHealth;
     }
     
-    public List<Items> GetItems()
+    public List<string> GetItems()
     {
         return items;
     }
@@ -65,23 +66,38 @@ public class Dwarf
     public void Attack(Elf elf)
     {
         int attackValue = GetAttack();
-        int damage = Math.Max(0, attackValue - elf.GetDefense()); // calcula el da;o segun la defensa
+        int damage = Math.Max(0, attackValue - elf.GetDefense()); // calcula el daño segun la defensa
         elf.SetHealth(elf.GetHealth() - damage); // reduce la vida del enano atacado
     }
 
     public void Heal(int qty)
     {
-        health += qty;
-        Console.WriteLine($"{name} se curo {qty} puntos de vida y su salud actual es {health}");
+        if (this.health < 100)
+        {
+            health += qty;
+            Console.WriteLine($"{name} se curo {qty} puntos de vida y su salud actual es {health}");
+        }
+        else
+        {
+            Console.WriteLine($"No fue posible curarse. {this.name} ya tiene todos los puntos de vida.");
+        }
+        
     }
 
-    public void AddItem(Items item)
+    public void AddItem(string item)
     {
-        items.Add(item);
-        Console.WriteLine($"{name} guardo {item.GetName()} en su bolsa encantada.");
+        if (items.Contains((item)))
+        {
+            items.Add(item);
+            Console.WriteLine($"{name} guardo {item} en su bolsa encantada.");
+        }
+        else
+        {
+            Console.WriteLine($"{name} no pudo guardar {item} en su bolsa porque ya lo posee."); 
+        }
     }
 
-    public void RmItem(Items item)
+    public void RmItem(string item)
     {
         if (items.Contains((item)))
         {
@@ -90,7 +106,7 @@ public class Dwarf
         }
         else
         {
-            Console.WriteLine($"{item.GetNombre()} no esta en la bolsa encantada de {name}.");
+            Console.WriteLine($"{item} no esta en la bolsa encantada de {name}.");
         }
     }
 }
