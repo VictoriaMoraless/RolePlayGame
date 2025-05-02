@@ -27,6 +27,16 @@ public class Wizard
     {
         return health;
     }
+    
+    public bool IsDead()
+    {
+        return health <= 0;
+    }
+
+    public string DeadOrAlive()
+    {
+        return health <= 0 ? $"{name} esta muerto." : $"{name} esta vivo.";
+    }
 
     public void SetHealth(int newHealth)
     {
