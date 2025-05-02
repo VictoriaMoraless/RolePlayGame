@@ -1,3 +1,4 @@
+using Library;
 namespace Library;
 
 public class Wizard
@@ -16,4 +17,28 @@ public class Wizard
         this.items = new List<string>();
         this.magicBook = new List<string>();
     }
+    // getname
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public void SetHealth(int newHealth)
+    {
+        health = newHealth;
+    }
+    //getitems
+    //getattack
+    public int GetDefense()
+    {
+        return 5;
+    }
+    
+
 }
