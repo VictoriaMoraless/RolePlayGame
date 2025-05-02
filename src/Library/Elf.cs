@@ -11,6 +11,7 @@ public class Elf
     {
         this.name = name;
         this.health = 100;
+        this.magic = 30;
         this.items = new List<string>(); // es una lista vacia
     }
     
