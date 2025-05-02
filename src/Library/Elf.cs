@@ -4,6 +4,7 @@ public class Elf
 {
     private string name;
     private int health;
+    private int magic;
     private List<string> items;
 
     public Elf(string name)
