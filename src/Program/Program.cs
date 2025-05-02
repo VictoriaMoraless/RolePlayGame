@@ -9,15 +9,19 @@ class Program
         
         // creando elementos
         Items espada = new Items("Espada", 30, 20);
-        Items incienso = new Items("Incienso", 20, 0);
-        Items gorro = new Items("Gorro", 0, 40);
+        Items incienso = new Items("Incienso", 0, 10);
+        Items gorro = new Items("Gorro", 0, 5);
         Items capa = new Items("Capa", 0, 30);
         
         // agregando elementos
-        dwarf1.AddItem("Espada");
-        dwarf1.AddItem("Incienso");
+        dwarf1.AddItem(espada);
+        dwarf1.AddItem(incienso);
         elf1.AddItem("Gorro");
         elf1.AddItem("Capa");
+        
+        // atacar
+        dwarf1.Attack(elf1);
+        Console.WriteLine(elf1.DeadOrAlive());
 
     }
 }
