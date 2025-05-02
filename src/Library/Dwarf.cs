@@ -97,10 +97,18 @@ public class Dwarf
     
     public void Attack(Elf elf)
     {
+        if (elf.IsDead())
+        {
+            Console.WriteLine($"{elf.GetName()} esta muerto, no se le puede hacer mas da;o.");
+            return;
+        }
+        
         int attackValue = GetAttack();
         int damage = Math.Max(0, attackValue - elf.GetDefense()); // calcula el da;o segun la defensa
         elf.SetHealth(elf.GetHealth() - damage); // reduce la vida del enano atacado
+        Console.WriteLine($"{GetName()} ataco a {elf.GetName} y le hizo {damage} de da;o.");
     }
+
 
     public void Heal(int qty)
     {

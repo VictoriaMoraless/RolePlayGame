@@ -26,6 +26,16 @@ public class Elf
     {
         return health;
     }
+    
+    public bool IsDead()
+    {
+        return health <= 0;
+    }
+
+    public string DeadOrAlive()
+    {
+        return health <= 0 ? $"{name} esta muerto." : $"{name} esta vivo.";
+    }
 
     public void SetHealth(int newHealth)
     {
@@ -49,10 +59,18 @@ public class Elf
 
     public void Attack(Dwarf dwarf)
     {
+        if (dwarf.IsDead())
+        {
+            Console.WriteLine($"{dwarf.GetName()} esta muerto, no se le puede hacer mas da;o.");
+            return;
+        }
+        
         int attackValue = GetAttack();
         int damage = Math.Max(0, attackValue - dwarf.GetDefense()); // calcula el da;o segun la defensa
         dwarf.SetHealth(dwarf.GetHealth() - damage); // reduce la vida del enano atacado
+        Console.WriteLine($"{GetName()} ataco a {dwarf.GetName} y le hizo {damage} de da;o.");
     }
+
     
     
     public void Attack(Wizard wizard)
@@ -65,9 +83,16 @@ public class Elf
     
     public void Attack(Elf elf)
     {
+        if (elf.IsDead())
+        {
+            Console.WriteLine($"{elf.GetName()} esta muerto, no se le puede hacer mas da;o.");
+            return;
+        }
+        
         int attackValue = GetAttack();
-        int damage = Math.Max(0, attackValue - elf.GetDefense()); // calcula el daño segun la defensa
+        int damage = Math.Max(0, attackValue - elf.GetDefense()); // calcula el da;o segun la defensa
         elf.SetHealth(elf.GetHealth() - damage); // reduce la vida del enano atacado
+        Console.WriteLine($"{GetName()} ataco a {elf.GetName} y le hizo {damage} de da;o.");
     }
 
     public void Heal(int qty)
