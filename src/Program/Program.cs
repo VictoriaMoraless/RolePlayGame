@@ -3,10 +3,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // creando personajes
-        Dwarf dwarf1 = new Dwarf("Gimli");
-        Elf elf1 = new Elf("Angrod");
-
+        // items disponibles
         List<Items> items = new List<Items>
         {
             new Items("Espada", 30, 20),
@@ -14,8 +11,40 @@ class Program
             new Items("Gorro", 0, 5),
             new Items("Capa", 0, 30)
         };
+
+        // personajes
+        List<Dwarf> dwarves = new List<Dwarf> { new Dwarf("Gimli"), new Dwarf("Thorin") };
+        List<Elf> elves = new List<Elf> { new Elf("Angrod")};
         
-        
+        // seleccionar personajes
+        static object SelectCharacter(List<Dwarf> dwarves, List<Elf> elves, List<Wizard> wizards)
+        {
+            Console.WriteLine("Elegi el personaje:");
+            Console.WriteLine("1. Enano");
+            Console.WriteLine("2. Elfo");
+            Console.WriteLine("3. Mago");
+
+            int type = int.Parse(Console.ReadLine());
+
+            if (type == 1)
+            {
+                for (int i = 0; i < dwarves.Count; i++)
+                {
+                    Console.WriteLine($"{i}: {dwarves[i].GetName()}");
+                }
+
+                int selection = int.Parse(Console.ReadLine());
+                return dwarves[selection];
+            }
+            else if (type == 2)
+            {
+                for (int i = 0; i < elves.Count; i++)
+                {
+                    Console.WriteLine($"{i}: {elves[i].GetName()}");
+                }
+            }
+        }
+
         // agregando elementos
         dwarf1.AddItem(espada);
         dwarf1.AddItem(incienso);
