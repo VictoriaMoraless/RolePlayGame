@@ -5,19 +5,16 @@ public class Wizard
 {
     private string name;
     private int health;
-    private int magic;
-    private List<string> items;
-    private List<string> magicBook;
+    private List<Items> items;
+    private SpellsBook book;
 
-    public Wizard(string name)
+    public Wizard(string name, SpellsBook book)
     {
         this.name = name;
         this.health = 100;
-        this.magic = 30;
-        this.items = new List<string>();
-        this.magicBook = new List<string>();
+        this.items = new List<Items>();
+        this.book = book;
     }
-    // getname
 
     public string GetName()
     {
@@ -28,7 +25,7 @@ public class Wizard
     {
         return health;
     }
-    
+
     public bool IsDead()
     {
         return health <= 0;
@@ -36,19 +33,55 @@ public class Wizard
 
     public string DeadOrAlive()
     {
-        return health <= 0 ? $"{name} esta muerto." : $"{name} esta vivo.";
+        return IsDead() ? $"{name} está muerto." : $"{name} está vivo.";
     }
 
     public void SetHealth(int newHealth)
     {
         health = newHealth;
     }
-    //getitems
-    //getattack
+
+    public void AddItem(Items item)
+    {
+        items.Add(item);
+    }
+
+    public int GetAttack()
+    {
+        int itemsAttack = items.Sum(i => i.GetAttack());
+        int spellsAttack = book.PoderTotal();
+        return itemsAttack + spellsAttack;
+    }
+
     public int GetDefense()
     {
-        return 5;
+        return items.Sum(i => i.GetDefense());
     }
-    
 
+    public void Attack(Wizard target)
+    {
+        int damage = this.GetAttack() - target.GetDefense();
+        if (damage < 0) damage = 0;
+        target.ReceiveDamage(damage);
+    }
+
+    public void Attack(Dwarf target)
+    {
+        int damage = this.GetAttack() - target.GetDefense();
+        if (damage < 0) damage = 0;
+        target.SetHealth(target.GetHealth() - damage);
+    }
+
+    public void Attack(Elf target)
+    {
+        int damage = this.GetAttack() - target.GetDefense();
+        if (damage < 0) damage = 0;
+        target.SetHealth(target.GetHealth() - damage);
+    }
+
+    public void ReceiveDamage(int damage)
+    {
+        health -= damage;
+        if (health < 0) health = 0;
+    }
 }

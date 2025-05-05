@@ -15,6 +15,7 @@ class Program
         // personajes
         List<Dwarf> dwarves = new List<Dwarf> { new Dwarf("Gimli"), new Dwarf("Thorin") };
         List<Elf> elves = new List<Elf> { new Elf("Angrod")};
+        List<Wizard> wizards = new List<Wizard> { new Wizard("Dumbledore") };
         
         // seleccionar personajes
         static object SelectCharacter(List<Dwarf> dwarves, List<Elf> elves, List<Wizard> wizards)
@@ -45,7 +46,7 @@ class Program
             }
         }
 
-        // agregando elementos
+        // agregando elementos a los personajes
         dwarf1.AddItem("espada");
         dwarf1.AddItem("incienso");
         elf1.AddItem("Gorro");
