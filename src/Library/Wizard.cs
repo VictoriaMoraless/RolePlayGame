@@ -8,7 +8,7 @@ public class Wizard
     private List<Items> items;
     private SpellsBook book;
 
-    public Wizard(string name, SpellsBook book)
+    public Wizard(string name)
     {
         this.name = name;
         this.health = 100;
