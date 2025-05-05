@@ -46,8 +46,8 @@ class Program
         }
 
         // agregando elementos
-        dwarf1.AddItem(espada);
-        dwarf1.AddItem(incienso);
+        dwarf1.AddItem("espada");
+        dwarf1.AddItem("incienso");
         elf1.AddItem("Gorro");
         elf1.AddItem("Capa");
 

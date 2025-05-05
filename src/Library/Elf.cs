@@ -61,14 +61,14 @@ public class Elf
     {
         if (dwarf.IsDead())
         {
-            Console.WriteLine($"{dwarf.GetName()} esta muerto, no se le puede hacer mas da;o.");
+            Console.WriteLine($"{dwarf.GetName()} esta muerto, no se le puede hacer mas daño.");
             return;
         }
         
         int attackValue = GetAttack();
-        int damage = Math.Max(0, attackValue - dwarf.GetDefense()); // calcula el da;o segun la defensa
+        int damage = Math.Max(0, attackValue - dwarf.GetDefense()); // calcula el daño según la defensa
         dwarf.SetHealth(dwarf.GetHealth() - damage); // reduce la vida del enano atacado
-        Console.WriteLine($"{GetName()} ataco a {dwarf.GetName()} y le hizo {damage} de da;o.");
+        Console.WriteLine($"{GetName()} ataco a {dwarf.GetName()} y le hizo {damage} de daño.");
     }
 
     
