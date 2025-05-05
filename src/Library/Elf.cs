@@ -114,11 +114,11 @@ public class Elf
         if (!items.Contains(item))
         {
             items.Add(item);
-            Console.WriteLine($"{name} guardo {item} en su bolsa encantada.");
+            Console.WriteLine($"{name} guardo {item.GetName()} en su bolsa encantada.");
         }
         else
         {
-            Console.WriteLine($"{name} no pudo guardar {item} en su bolsa porque ya lo posee."); 
+            Console.WriteLine($"{name} no pudo guardar {item.GetName()} en su bolsa porque ya lo posee."); 
         }
     }
 
