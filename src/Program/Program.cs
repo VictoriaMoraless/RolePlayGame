@@ -148,15 +148,15 @@ class Program
 
     static void Attack(object attacker, object target)
     {
-        if (attacker is Dwarf d1 && target is Dwarf d2) d1.Attack(d2);
-        else if (attacker is Dwarf d1 && target is Elf e1) d1.Attack(e1);
-        else if (attacker is Dwarf d1 && target is Wizard w1) d1.Attack(w1);
-        else if (attacker is Elf e2 && target is Dwarf d2) e2.Attack(d2);
-        else if (attacker is Elf e2 && target is Elf e3) e2.Attack(e3);
+        if (attacker is Dwarf aD && target is Dwarf tD) aD.Attack(tD);
+        else if (attacker is Dwarf d1 && target is Elf tE) d1.Attack(tE);
+        else if (attacker is Dwarf AD && target is Wizard w1) AD.Attack(w1);
+        else if (attacker is Elf aE && target is Dwarf d2) aE.Attack(d2);
+        else if (attacker is Elf e1 && target is Elf e3) e1.Attack(e3);
         else if (attacker is Elf e2 && target is Wizard w2) e2.Attack(w2);
-        else if (attacker is Wizard w3 && target is Dwarf d3) w3.Attack(d3);
+        else if (attacker is Wizard aW && target is Dwarf d3) aW.Attack(d3);
         else if (attacker is Wizard w3 && target is Elf e4) w3.Attack(e4);
-        else if (attacker is Wizard w3 && target is Wizard w4) w3.Attack(w4);
+        else if (attacker is Wizard AW && target is Wizard w4) AW.Attack(w4);
     }
 
     static void ShowHealth(object character)
