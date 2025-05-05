@@ -22,11 +22,24 @@ public class SpellsBook
         }
     }
 
-    public void QuitarHechizo(Spells hechizo)
+    public void AddSpell(Spells spell)
     {
-        if (hechizos.Contains(hechizo) && hechizos.Count > 1)
+        if (!hechizos.Contains(spell))
         {
-            hechizos.Remove(hechizo);
+            hechizos.Add(spell);
+        }
+    }
+
+    public bool Contains(Spells spell)
+    {
+        return hechizos.Contains(spell);
+    }
+
+    public void RmSpell(Spells spell)
+    {
+        if (hechizos.Contains(spell) && hechizos.Count > 1)
+        {
+            hechizos.Remove(spell);
         }
     }
 

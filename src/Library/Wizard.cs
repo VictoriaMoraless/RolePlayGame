@@ -84,4 +84,33 @@ public class Wizard
         health -= damage;
         if (health < 0) health = 0;
     }
+    public void AddSpell(Spells spells)
+    {
+        Console.WriteLine("\nAdquirir hechizo:");
+        if (spells != null && !this.book.Contains(spells))
+        {
+            this.book.AddSpell(spells);
+            Console.WriteLine($"{this.name} ha adquirido el hechizo ¨{spells.GetName()}¨.");
+        }
+        else
+        {
+            Console.WriteLine($"No fue posible adquirir. {this.name} ya posee el hechizo ¨{spells.GetName()}¨.");
+        }
+    }
+
+    public void RmSpell(Spells spells)
+    {
+        Console.WriteLine("\nRemover hechizo:");
+        if (spells != null && this.book.Contains(spells))
+        {
+            this.book.RmSpell(spells);
+            Console.WriteLine($"{this.name} removió el hechizo ¨{spells.GetName()}¨.");
+        }
+        else
+        {
+            Console.WriteLine($"No fue posible remover. {this.name} no posee el hechizo ¨{spells.GetName()}¨.");
+        }
+    }
+
+
 }

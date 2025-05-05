@@ -1,4 +1,5 @@
 using Library;
+
 class Program
 {
     static void Main(string[] args)
@@ -8,18 +9,18 @@ class Program
         Items incienso = new Items("Incienso", 0, 10);
         Items gorro = new Items("Gorro", 0, 5);
         Items capa = new Items("Capa", 0, 30);
-        
-        List<Items> items = new List<Items> { espada, incienso, gorro, capa};
+
+        List<Items> items = new List<Items> { espada, incienso, gorro, capa };
 
         // personajes
         List<Dwarf> dwarves = new List<Dwarf> { new Dwarf("Gimli"), new Dwarf("Thorin") };
-        List<Elf> elves = new List<Elf> { new Elf("Angrod")};
+        List<Elf> elves = new List<Elf> { new Elf("Angrod") };
         List<Wizard> wizards = new List<Wizard> { new Wizard("Dumbledore") };
-        
+
         // seleccionar personajes
         object character1 = SelectCharacter(dwarves, elves, wizards);
         object character2 = SelectCharacter(dwarves, elves, wizards);
-        
+
         // asignar items
         if (character1 is Dwarf d1)
         {
@@ -36,7 +37,7 @@ class Program
             w1.AddItem(incienso);
             w1.AddItem(capa);
         }
-        
+
         if (character2 is Dwarf d2)
         {
             d2.AddItem(espada);
@@ -52,8 +53,16 @@ class Program
             w2.AddItem(incienso);
             w2.AddItem(capa);
         }
+        //crear hechizos
+        Spells bolaDeFuego = new Spells("Bola de fuego", 50);
 
-    
+        //asignar hechizo
+        if (wizards.Count > 0)
+        {
+            Wizard wizard = wizards[0]; 
+            wizard.AddSpell(bolaDeFuego);
+        }
+
         static object SelectCharacter(List<Dwarf> dwarves, List<Elf> elves, List<Wizard> wizards)
         {
             Console.WriteLine("Elegi el personaje:");
@@ -99,8 +108,8 @@ class Program
             }
         }
 
-      
-        
+
+
         static bool IsDead(object character)
         {
             if (character is Dwarf d) return d.IsDead();
@@ -130,7 +139,7 @@ class Program
             ShowHealth(character1);
             ShowHealth(character2);
         }
-        
+
         Console.WriteLine($"\nfin del combate");
         Console.WriteLine(IsDead(character1)
             ? $"{GetName(character1)} murio"
@@ -168,4 +177,5 @@ class Program
         else if (character is Wizard w)
             Console.WriteLine($"Salud de {w.GetName()}: {w.GetHealth()}");
     }
+
 }
