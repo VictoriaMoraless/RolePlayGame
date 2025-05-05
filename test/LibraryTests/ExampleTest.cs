@@ -1,4 +1,5 @@
 namespace LibraryTests;
+using Library;
 
 public class Tests
 {
@@ -6,16 +7,21 @@ public class Tests
     public void Setup()
     {
     }
-
-    [Test]
-   
+    
     //Ataque reduce salud correctamente
-    public void Test1()
+    [Test]
+    public void DwarfAttack_AffectsHealth()
     {
+        int defaultHealth = 100;
+        Dwarf attacker = new Dwarf("Thorin");
+        Elf target = new Elf("Angrod");
+
+        Items espada = new Items("espada", 30, 20);
+        attacker.AddItem(espada);
+        attacker.Attack(target);
         
+        Assert.Less(target.GetHealth(), defaultHealth);
         
-        
-        Assert.Pass();
     }
     
     
