@@ -45,4 +45,3 @@ public class SpellsBook
         return $"SpellsBook con {hechizos.Count} hechizo(s), poder total: {PoderTotal()}";
     }
 }
-
