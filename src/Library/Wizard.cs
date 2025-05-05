@@ -13,7 +13,7 @@ public class Wizard
         this.name = name;
         this.health = 100;
         this.items = new List<Items>();
-        this.book = book;
+        this.book = new SpellsBook(new List<Spells>());
     }
 
     public string GetName()
