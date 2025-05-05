@@ -52,6 +52,7 @@ public class Wizard
         int spellsAttack = book.PoderTotal();
         return itemsAttack + spellsAttack;
     }
+    
 
     public int GetDefense()
     {
