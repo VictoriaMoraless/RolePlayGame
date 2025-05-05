@@ -6,14 +6,14 @@ public class Elf
     private string name;
     private int health;
     private int magic;
-    private List<string> items;
+    private List<Items> items;
 
     public Elf(string name)
     {
         this.name = name;
         this.health = 100;
         this.magic = 30;
-        this.items = new List<string>(); // es una lista vacia
+        this.items = new List<Items>(); // es una lista vacia
     }
     
     
@@ -42,7 +42,7 @@ public class Elf
         health = newHealth;
     }
     
-    public List<string> GetItems()
+    public List<Items> GetItems()
     {
         return items;
     }
@@ -109,9 +109,9 @@ public class Elf
         
     }
 
-    public void AddItem(string item)
+    public void AddItem(Items item)
     {
-        if (items.Contains((item)))
+        if (!items.Contains(item))
         {
             items.Add(item);
             Console.WriteLine($"{name} guardo {item} en su bolsa encantada.");
@@ -122,9 +122,9 @@ public class Elf
         }
     }
 
-    public void RmItem(string item)
+    public void RmItem(Items item)
     {
-        if (items.Contains((item)))
+        if (items.Contains(item))
         {
             items.Remove(item);
             Console.WriteLine($"{name} saco {item} de su bolsa encantada.");
