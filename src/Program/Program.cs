@@ -155,7 +155,7 @@ class Program
         return "Desconocido";
     }
 
-    static void Attack(object Belen, object target)
+    static void Attack(object attacker, object target)
     {
         if (attacker is Dwarf aD && target is Dwarf tD) aD.Attack(tD);
         else if (attacker is Dwarf d1 && target is Elf tE) d1.Attack(tE);
