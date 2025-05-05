@@ -43,16 +43,41 @@ class Program
                 {
                     Console.WriteLine($"{i}: {elves[i].GetName()}");
                 }
+
+                int selection = int.Parse(Console.ReadLine());
+                return elves[selection];
+            }
+            else if (type == 3)
+            {
+                for (int i = 0; i < wizards.Count; i++)
+                {
+                    Console.WriteLine($"{i}: {wizards[i].GetName()}");
+                }
+
+                int selection = int.Parse(Console.ReadLine());
+                return wizards[selection];
+            }
+            else
+            {
+                throw new ArgumentException("Seleccion invalida.");
             }
         }
 
-        // agregando elementos a los personajes
-        dwarf1.AddItem("espada");
-        dwarf1.AddItem("incienso");
-        elf1.AddItem("Gorro");
-        elf1.AddItem("Capa");
+        object character1 = SelectCharacter(dwarves, elves, wizards);
+        object character2 = SelectCharacter(dwarves, elves, wizards);
 
-        while (!dwarf1.IsDead() && !elf1.IsDead())
+        while (true)
+        {
+            Console.WriteLine("\nQuien juega? (1 o 2)");
+            string input = Console.ReadLine();
+
+            if (input == "1")
+            {
+                if (character1 is Dwarf d && character2 is Dwarf d2) d.Attack(d2);
+                
+            }
+        }
+        while (!character1.IsDead() && !character2.IsDead())
         {
             Console.WriteLine("\nQuien juega? (1 = Gimli, 2 = Angrod)");
             string input = Console.ReadLine();
