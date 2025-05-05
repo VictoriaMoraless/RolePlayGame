@@ -24,9 +24,8 @@ public class Tests
     
     
     //No se permite agregar el mismo item dos veces
-    public void Test2()
+    public void NoDuplicidadItem()
     {
-        
         
         
         Assert.Pass();
