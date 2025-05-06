@@ -33,32 +33,33 @@ public class Tests
     }
 
 
-    //No se permite agregar el mismo item dos veces
-        public void NoDuplicidadItem()
-        {
+//No se permite agregar el mismo item dos veces
+    public void NoDuplicidadItem()
+    {
 
 
-            Assert.Pass();
-        }
+        Assert.Pass();
+    }
 
 
         //Se puede eliminar un ítem existente
-        public void TestRmItem()
-        {
-            Elf elf = new Elf("Angrod");
+    [Test]
+    public void TestRmItem()
+    {
+        Elf elf = new Elf("Angrod");
 
-            Items Gorro = new Items("Gorro", 0, 5);
-            elf.AddItem(Gorro);
-            elf.RmItem(Gorro);
+        Items Gorro = new Items("Gorro", 0, 5);
+        elf.AddItem(Gorro);
+        elf.RmItem(Gorro);
 
-            Assert.IsFalse(elf.GetItems().Contains(Gorro));
+        Assert.IsFalse(elf.GetItems().Contains(Gorro));
 
-        }
+    }
 
-        //Ataque no hace daño si ataque <= defensa
-        public void Test4()
-        {
+    //Ataque no hace daño si ataque <= defensa
+    public void Test4()
+    {
 
-            Assert.Pass();
-        }
+        Assert.Pass();
+    }
 }
