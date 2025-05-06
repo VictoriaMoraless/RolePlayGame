@@ -1,5 +1,4 @@
 using Library;
-
 namespace LibraryTests;
 using Library;
 
@@ -26,51 +25,21 @@ public class Tests
         Assert.Less(target.GetHealth(), defaultHealth);
         
     }
-    
-    
-    
-    
-    
-    
-    //No se permite agregar el mismo item dos veces
-    public void NoDuplicidadItem()
-    {
 
-   
     //Ataque reduce salud correctamente
     public void Test1()
     {
-        
-
-        
-        
         Assert.Pass();
     }
-    
-    
-    
-    
-    
-
-    //Se puede eliminar un ítem existente
-    public void Test3()
-    {
 
 
-
-        Assert.Pass();
-
-
-        //No se permite agregar el mismo item dos veces
+    //No se permite agregar el mismo item dos veces
         public void NoDuplicidadItem()
         {
 
 
             Assert.Pass();
         }
-
-
-
 
 
         //Se puede eliminar un ítem existente
@@ -86,16 +55,10 @@ public class Tests
 
         }
 
-
-
-
-
         //Ataque no hace daño si ataque <= defensa
         public void Test4()
         {
 
-
-
             Assert.Pass();
         }
-    }
+}
