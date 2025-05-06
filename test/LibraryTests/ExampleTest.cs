@@ -64,7 +64,7 @@ public class Tests
     public void NoDuplicidadItem()
     {
         Dwarf dwarf = new Dwarf("duendecillo");
-        Items espada = new Items("pene enorme",30,20);
+        Items espada = new Items("espada",30,20);
         dwarf.AddItem(espada);
         dwarf.AddItem(espada);
 
