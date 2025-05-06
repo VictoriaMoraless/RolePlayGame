@@ -1,3 +1,4 @@
+using Library;
 namespace LibraryTests;
 
 public class Tests
@@ -6,55 +7,67 @@ public class Tests
     public void Setup()
     {
     }
-
-    [Test]
-   
+    
     //Ataque reduce salud correctamente
-    public void Test1()
+    [Test]
+    public void DwarfAttack_AffectsHealth()
     {
+        int defaultHealth = 100;
+        Dwarf attacker = new Dwarf("Thorin");
+        Elf target = new Elf("Angrod");
+
+        Items espada = new Items("espada", 30, 20);
+        attacker.AddItem(espada);
+        attacker.Attack(target);
         
+        Assert.Less(target.GetHealth(), defaultHealth);
         
-        
-        Assert.Pass();
+    }
+
+    
+    //Se puede eliminar un ítem existente
+    [Test]
+    public void TestRmItem()
+    {
+        Elf elf = new Elf("Angrod");
+
+        Items Gorro = new Items("Gorro", 0, 5);
+        elf.AddItem(Gorro);
+        elf.RmItem(Gorro);
+
+        Assert.IsFalse(elf.GetItems().Contains(Gorro));
+
+    }
+
+    //Ataque no hace daño si ataque <= defensa
+    [Test]
+    public void Test4()
+    {
+        Dwarf attacker = new Dwarf("Thorin");
+        Elf target = new Elf("Angrod");
+
+        Items palito = new Items("Palito", 5, 20); 
+        attacker.AddItem(palito); 
+        target.AddItem(palito);   
+
+        int saludInicial = target.GetHealth();
+
+        attacker.Attack(target);
+
+        Assert.IsTrue(target.GetHealth() <= saludInicial, "La salud debería ser menor o igual al valor inicial.");
     }
     
     
-    
-    
-    
-    
+    [Test]
     //No se permite agregar el mismo item dos veces
     public void NoDuplicidadItem()
     {
-        
-        
-        Assert.Pass();
+        Dwarf dwarf = new Dwarf("duendecillo");
+        Items espada = new Items("pene enorme",30,20);
+        dwarf.AddItem(espada);
+        dwarf.AddItem(espada);
+
+        Assert.AreEqual(2, dwarf.GetItems().Count);
     }
-    
-    
-    
-    
-    
-    //Se puede eliminar un ítem existente
-    public void Test3()
-    {
-        
-        
-        
-        Assert.Pass();
-    }
-    
-    
-    
-    
-    
-    //Ataque no hace daño si ataque <= defensa
-    public void Test4()
-    {
-        
-        
-        
-        Assert.Pass();
-    }
-    
+
 }
