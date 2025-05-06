@@ -56,6 +56,7 @@ public class Tests
 
         Assert.IsTrue(target.GetHealth() <= saludInicial, "La salud debería ser menor o igual al valor inicial.");
     }
+
     
     
     [Test]
@@ -69,5 +70,6 @@ public class Tests
 
         Assert.AreEqual(2, dwarf.GetItems().Count);
     }
+
 
 }
