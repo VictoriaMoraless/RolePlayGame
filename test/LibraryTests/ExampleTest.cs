@@ -11,7 +11,6 @@ public class Tests
     
     //Ataque reduce salud correctamente
     [Test]
-
     public void DwarfAttack_AffectsHealth()
     {
         int defaultHealth = 100;
@@ -27,6 +26,7 @@ public class Tests
     }
 
     //Ataque reduce salud correctamente
+    [Test]
     public void Test1()
     {
         Assert.Pass();
@@ -34,41 +34,44 @@ public class Tests
 
 
     //No se permite agregar el mismo item dos veces
-        public void NoDuplicidadItem()
-        {
+    [Test]
+    public void NoDuplicidadItem()
+    {
 
 
-            Assert.Pass();
-        }
+        Assert.Pass();
+    }
 
 
-        //Se puede eliminar un ítem existente
-        public void TestRmItem()
-        {
-            Elf elf = new Elf("Angrod");
+    //Se puede eliminar un ítem existente
+    [Test]
+    public void TestRmItem()
+    {
+        Elf elf = new Elf("Angrod");
 
-            Items Gorro = new Items("Gorro", 0, 5);
-            elf.AddItem(Gorro);
-            elf.RmItem(Gorro);
+        Items Gorro = new Items("Gorro", 0, 5);
+        elf.AddItem(Gorro);
+        elf.RmItem(Gorro);
 
-            Assert.IsFalse(elf.GetItems().Contains(Gorro));
+        Assert.IsFalse(elf.GetItems().Contains(Gorro));
 
-        }
+    }
 
-        //Ataque no hace daño si ataque <= defensa
-        public void Test4()
-        {
-            Dwarf attacker = new Dwarf("Thorin");
-            Elf target = new Elf("Angrod");
+    //Ataque no hace daño si ataque <= defensa
+    [Test]
+    public void Test4()
+    {
+        Dwarf attacker = new Dwarf("Thorin");
+        Elf target = new Elf("Angrod");
 
-            Items palito = new Items("Palito", 5, 20); // 5 de ataque, 20 de defensa
-            attacker.AddItem(palito); // daño total: 5
-            target.AddItem(palito);   // suma defensa: 20
+        Items palito = new Items("Palito", 5, 20); // 5 de ataque, 20 de defensa
+        attacker.AddItem(palito); // daño total: 5
+        target.AddItem(palito);   // suma defensa: 20
 
-            int saludInicial = target.GetHealth();
+        int saludInicial = target.GetHealth();
 
-            attacker.Attack(target);
+        attacker.Attack(target);
 
-            Assert.AreEqual(saludInicial, target.GetHealth(), "La salud no debería cambiar porque el ataque fue bloqueado.");
-        }
+        Assert.AreEqual(saludInicial, target.GetHealth(), "La salud no debería cambiar porque el ataque fue bloqueado.");
+    }
 }
