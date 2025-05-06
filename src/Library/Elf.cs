@@ -85,14 +85,22 @@ public class Elf
     {
         if (elf.IsDead())
         {
-            Console.WriteLine($"{elf.GetName()} esta muerto, no se le puede hacer mas da;o.");
+            Console.WriteLine($"{elf.GetName()} esta muerto, no se le puede hacer mas daño.");
             return;
         }
-        
+
         int attackValue = GetAttack();
-        int damage = Math.Max(0, attackValue - elf.GetDefense()); // calcula el da;o segun la defensa
-        elf.SetHealth(elf.GetHealth() - damage); // reduce la vida del enano atacado
-        Console.WriteLine($"{GetName()} ataco a {elf.GetName()} y le hizo {damage} de da;o.");
+        int damage = Math.Max(0, attackValue - elf.GetDefense());
+
+        if (damage > 0) // Only reduce health if damage is greater than 0
+        {
+            elf.SetHealth(elf.GetHealth() - damage);
+            Console.WriteLine($"{GetName()} ataco a {elf.GetName()} y le hizo {damage} de daño.");
+        }
+        else
+        {
+            Console.WriteLine($"{GetName()} ataco a {elf.GetName()} pero no hizo daño porque la defensa fue mayor o igual al ataque.");
+        }
     }
 
     public void Heal(int qty)
