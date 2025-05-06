@@ -56,4 +56,20 @@ public class Tests
 
         Assert.IsTrue(target.GetHealth() <= saludInicial, "La salud debería ser menor o igual al valor inicial.");
     }
+
+    
+    
+    [Test]
+    //No se permite agregar el mismo item dos veces
+    public void NoDuplicidadItem()
+    {
+        Dwarf dwarf = new Dwarf("duendecillo");
+        Items espada = new Items("pene enorme",30,20);
+        dwarf.AddItem(espada);
+        dwarf.AddItem(espada);
+
+        Assert.AreEqual(2, dwarf.GetItems().Count);
+    }
+
+
 }
