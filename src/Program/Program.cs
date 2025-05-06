@@ -4,9 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        // items disponibels
+        // items disponibles
         Items espada = new Items("Espada", 30, 20);
-        Items incienso = new Items("Incienso", 0, 10);
+        Items incienso = new Items("Incienso", 0, 10); //elemento de curación
         Items gorro = new Items("Gorro", 0, 5);
         Items capa = new Items("Capa", 0, 30);
 
@@ -53,6 +53,7 @@ class Program
             w2.AddItem(incienso);
             w2.AddItem(capa);
         }
+
         //crear hechizos
         Spells bolaDeFuego = new Spells("Bola de fuego", 50);
 
@@ -108,8 +109,6 @@ class Program
             }
         }
 
-
-
         static bool IsDead(object character)
         {
             if (character is Dwarf d) return d.IsDead();
@@ -123,13 +122,26 @@ class Program
             Console.WriteLine("\nQuien juega? (1 o 2)");
             string input = Console.ReadLine();
 
-            if (input == "1")
+            Console.WriteLine("Que deseas hacer?");
+            Console.WriteLine("1. Atacar");
+            Console.WriteLine("2. Curar");
+            string action = Console.ReadLine();
+
+            if (input == "1" && action == "1")
             {
                 Attack(character1, character2);
             }
-            else if (input == "2")
+            else if (input == "2" && action == "1")
             {
                 Attack(character2, character1);
+            }
+            else if (input == "1" && action == "2")
+            {
+                HealCharacter(character1); // El personaje 1 se cura
+            }
+            else if (input == "2" && action == "2")
+            {
+                HealCharacter(character2); // El personaje 2 se cura
             }
             else
             {
@@ -144,7 +156,6 @@ class Program
         Console.WriteLine(IsDead(character1)
             ? $"{GetName(character1)} murio"
             : $"{GetName(character2)} murio");
-
     }
 
     static string GetName(object character)
@@ -177,5 +188,50 @@ class Program
         else if (character is Wizard w)
             Console.WriteLine($"Salud de {w.GetName()}: {w.GetHealth()}");
     }
+    
+    static void HealCharacter(object character)
+    {
+        List<Items> items = new List<Items>();
+        int currentHealth = 0;
+        string name = GetName(character);
 
+        if (character is Dwarf d)
+        {
+            items = d.GetItems();
+            currentHealth = d.GetHealth();
+        }
+        else if (character is Elf e)
+        {
+            items = e.GetItems();
+            currentHealth = e.GetHealth();
+        }
+        else if (character is Wizard w)
+        {
+            items = w.GetItems();  
+            currentHealth = w.GetHealth();
+        }
+        
+        Items incienso = items.FirstOrDefault(i => i.GetName() == "Incienso");
+
+        if (incienso != null)
+        {
+            int healAmount = 100 - currentHealth;
+            if (healAmount <= 0)
+            {
+                Console.WriteLine($"{name} ya tiene salud completa. No necesita curarse.");
+                return;
+            }
+
+            // Cura el personaje
+            if (character is Dwarf d1) d1.Heal(healAmount);
+            else if (character is Elf e1) e1.Heal(healAmount);
+            else if (character is Wizard w1) w1.Heal(healAmount);
+            
+            Console.WriteLine($"{name} usó el Incienso y se curó {healAmount} puntos.");
+        }
+        else
+        {
+            Console.WriteLine($"{name} no tiene Incienso entonces no puede curarse.");
+        }
+    }
 }

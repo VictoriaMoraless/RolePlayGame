@@ -41,9 +41,9 @@ public class Wizard
         health = newHealth;
     }
 
-    public void AddItem(Items item)
+    public List<Items> GetItems()
     {
-        items.Add(item);
+        return items;
     }
 
     public int GetAttack()
@@ -111,6 +111,19 @@ public class Wizard
         {
             Console.WriteLine($"No fue posible remover. {this.name} no posee el hechizo ¨{spells.GetName()}¨.");
         }
+    }
+
+    public void Heal(int healAmount)
+    {
+        health += healAmount;
+        if (health > 100)
+        {
+            health = 100;
+        }
+    }
+    public void AddItem(Items item)
+    {
+        items.Add(item);
     }
 
 
